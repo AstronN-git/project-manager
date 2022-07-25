@@ -1,11 +1,12 @@
-package com.max.projectmanager.entities;
+package com.max.projectmanager.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="projects")
@@ -20,6 +21,6 @@ public class Project {
     private String name;
     private String url;
 
-    @OneToMany
-    List<Item> items;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
+    private Set<Item> items = new HashSet<>();
 }

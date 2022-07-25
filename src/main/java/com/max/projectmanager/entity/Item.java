@@ -1,4 +1,4 @@
-package com.max.projectmanager.entities;
+package com.max.projectmanager.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
