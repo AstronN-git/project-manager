@@ -18,4 +18,8 @@ public class ItemService {
     public List<Item> getItemsByProject(Project project) {
         return itemRepository.findItemsByProject(project);
     }
+
+    public List<Item> getItemsByProjectAndDone(Project project, Boolean isDone) {
+        return itemRepository.findItemsByProjectAndDone(project, isDone);
+    }
 }

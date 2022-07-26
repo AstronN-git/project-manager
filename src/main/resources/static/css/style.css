@@ -43,11 +43,28 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
-.projects {
-    width: 30%;
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.projects, .items {
     height: 100vh;
     border-right: 2px solid #000;
     overflow: auto;
+}
+
+.projects {
+    flex: 2;
+}
+
+.items {
+    flex:3;
+}
+
+.items:last-of-type {
+    border-right: none;
 }
 
 .project {

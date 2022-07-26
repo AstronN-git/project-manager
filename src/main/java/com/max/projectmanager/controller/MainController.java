@@ -24,8 +24,10 @@ public class MainController {
         if (projectId != null) {
             var project = projectService.findProjectById(projectId);
             if (project != null) {
-                var items = itemService.getItemsByProject(project);
-                model.addAttribute("items", items);
+                var itemsDone = itemService.getItemsByProjectAndDone(project, true);
+                var itemsNotDone = itemService.getItemsByProjectAndDone(project, false);
+                model.addAttribute("itemsDone", itemsDone);
+                model.addAttribute("itemsNotDone", itemsNotDone);
             }
         }
         return "index";

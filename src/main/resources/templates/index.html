@@ -10,13 +10,18 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<div class="container">
     <div class="projects">
         <div th:each="project : ${projectList}" class="project">
             <span th:text="${project.name}"></span>
         </div>
     </div>
-    <div th:if="${items}">
+    <div class="items">
 
     </div>
+    <div class="items">
+
+    </div>
+</div>
 </body>
 </html>
