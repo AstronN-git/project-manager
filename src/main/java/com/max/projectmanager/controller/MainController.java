@@ -18,7 +18,7 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String index(Model model, @RequestParam(name = "projectId", required = false) Long projectId) {
+    public String index(Model model, @RequestParam(name = "projectid", required = false) Long projectId) {
         var projects = projectService.findAllProjects();
         model.addAttribute(projects);
         if (projectId != null) {

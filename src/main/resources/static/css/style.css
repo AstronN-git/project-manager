@@ -41,6 +41,7 @@ table {
 
 body {
     font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
 }
 
 .container {
@@ -67,8 +68,16 @@ body {
     border-right: none;
 }
 
-.project {
+.item {
     border-bottom: 2px solid #000;
-    padding: .6em 1.2em .6em;
-    font-size: 1.6em;
+    padding: 1.2rem 2.4rem 1.2rem;
+    font-size: 1.6rem;
+}
+
+.small {
+    font-size: 1.4rem;
+}
+
+.item-header {
+    font-size: 1.8rem;
 }

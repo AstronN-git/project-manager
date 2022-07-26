@@ -12,15 +12,28 @@
 <body>
 <div class="container">
     <div class="projects">
-        <div th:each="project : ${projectList}" class="project">
+        <div class="item item-header">
+            Projects
+        </div>
+        <div th:each="project : ${projectList}" class="item"  th:onclick="|window.location.href='/?projectid=${project.id}'|">
             <span th:text="${project.name}"></span>
         </div>
     </div>
     <div class="items">
-
+        <div class="item item-header">
+            Not done
+        </div>
+        <div th:each="item : ${itemsNotDone}" class="item small">
+            <span th:text="${item.name}"></span>
+        </div>
     </div>
     <div class="items">
-
+        <div class="item item-header">
+            Done
+        </div>
+        <div th:each="item : ${itemsDone}" class="item small">
+            <span th:text="${item.name}"></span>
+        </div>
     </div>
 </div>
 </body>
