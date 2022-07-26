@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class MainController {
@@ -29,7 +30,17 @@ public class MainController {
                 model.addAttribute("itemsDone", itemsDone);
                 model.addAttribute("itemsNotDone", itemsNotDone);
             }
+            model.addAttribute("currentProjectId", projectId);
         }
         return "index";
+    }
+
+    @GetMapping("/deleteproject")
+    public RedirectView deleteProject(@RequestParam(name = "projectid") Long projectId) {
+        var project = projectService.findProjectById(projectId);
+        if (project != null) {
+            projectService.deleteProject(project);
+        }
+        return new RedirectView("/");
     }
 }

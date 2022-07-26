@@ -21,4 +21,8 @@ public class ProjectService {
     public Project findProjectById(Long id) {
         return projectRepository.findById(id).orElse(null);
     }
+
+    public void deleteProject(Project project) {
+        projectRepository.delete(project);
+    }
 }

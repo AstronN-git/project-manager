@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap');
 /* reset */
 
 html, body, div, span, applet, object, iframe,
@@ -54,6 +54,8 @@ body {
     height: 100vh;
     border-right: 2px solid #000;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .projects {
@@ -80,4 +82,37 @@ body {
 
 .item-header {
     font-size: 1.8rem;
+}
+
+.item-footer {
+    border-bottom: none;
+    border-top: 2px solid #000;
+    margin-top: auto;
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+.projects-footer {
+    display: flex;
+    padding: 0;
+}
+
+.projects-footer > div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.separator {
+    flex: 2;
+}
+
+.projects-footer-plus {
+    border-right: 2px solid #000;
+    flex: 1;
+}
+
+.projects-footer-minus {
+    border-left: 2px solid #000;
+    flex: 1;
 }
