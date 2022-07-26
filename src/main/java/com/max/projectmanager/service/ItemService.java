@@ -19,7 +19,7 @@ public class ItemService {
         return itemRepository.findItemsByProject(project);
     }
 
-    public List<Item> getItemsByProjectAndDone(Project project, Boolean isDone) {
-        return itemRepository.findItemsByProjectAndDone(project, isDone);
+    public List<Item> getItemsByProjectAndIsDone(Project project, Boolean isDone) {
+        return itemRepository.findItemsByProjectAndIsDone(project, isDone);
     }
 }
