@@ -1,10 +1,13 @@
 package com.max.projectmanager.controller;
 
+import com.max.projectmanager.entity.Project;
 import com.max.projectmanager.service.ItemService;
 import com.max.projectmanager.service.ProjectService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -41,6 +44,18 @@ public class MainController {
         if (project != null) {
             projectService.deleteProject(project);
         }
+        return new RedirectView("/");
+    }
+
+    @GetMapping("/createproject")
+    public String showCreateProjectForm(Model model) {
+        model.addAttribute("project", new Project());
+        return "create-project";
+    }
+
+    @PostMapping("/createproject")
+    public RedirectView processProjectCreation(@ModelAttribute Project project) {
+        projectService.saveProject(project);
         return new RedirectView("/");
     }
 }

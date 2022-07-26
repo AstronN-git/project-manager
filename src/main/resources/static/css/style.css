@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap');
 /* reset */
 
+* {
+    outline: none;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -115,4 +119,42 @@ body {
 .projects-footer-minus {
     border-left: 2px solid #000;
     flex: 1;
+}
+
+.title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.form-container {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.form-item {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+input[type=text] {
+    width: 100%;
+    font-size: 1.5rem;
+    letter-spacing: .1rem;
+    border: none;
+    border-bottom: 2px solid #000;
+    text-align: center;
+}
+
+input[type=submit] {
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: .06rem;
+    font-size: 1.5rem;
+    border: 2px solid #000;
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
 }
