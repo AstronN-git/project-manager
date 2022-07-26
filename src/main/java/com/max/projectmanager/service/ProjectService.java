@@ -17,4 +17,8 @@ public class ProjectService {
     public List<Project> findAllProjects() {
         return projectRepository.findAll();
     }
+
+    public Project findProjectById(Long id) {
+        return projectRepository.findById(id).orElse(null);
+    }
 }
