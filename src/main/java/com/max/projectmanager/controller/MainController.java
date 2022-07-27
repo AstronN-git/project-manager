@@ -1,5 +1,6 @@
 package com.max.projectmanager.controller;
 
+import com.max.projectmanager.entity.Item;
 import com.max.projectmanager.entity.Project;
 import com.max.projectmanager.service.ItemService;
 import com.max.projectmanager.service.ProjectService;
@@ -55,7 +56,29 @@ public class MainController {
 
     @PostMapping("/createproject")
     public RedirectView processProjectCreation(@ModelAttribute Project project) {
-        projectService.saveProject(project);
-        return new RedirectView("/");
+        project = projectService.saveProject(project);
+        return new RedirectView("/?projectid=" + project.getId());
+    }
+
+    @GetMapping("/createtask")
+    public String showCreateTaskForm(Model model,
+                                     @RequestParam(name = "projectid") Long projectId,
+                                     @RequestParam(name = "isdone", required = false, defaultValue = "false") Boolean isDone) {
+        var item = new Item();
+        var project = projectService.findProjectById(projectId);
+        if (project == null) {
+            return "error";
+        }
+
+        item.setProject(project);
+        item.setDone(isDone);
+        model.addAttribute("item", item);
+        return "create-task";
+    }
+
+    @PostMapping("/createtask")
+    public RedirectView processTaskCreation(@ModelAttribute Item item) {
+        item = itemService.saveItem(item);
+        return new RedirectView("/?projectid=" + item.getProject().getId());
     }
 }

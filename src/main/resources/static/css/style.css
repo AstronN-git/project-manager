@@ -94,14 +94,11 @@ body {
     margin-top: auto;
     font-size: 3rem;
     font-weight: 300;
-}
-
-.projects-footer {
     display: flex;
     padding: 0;
 }
 
-.projects-footer > div {
+.item-footer > div {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -111,12 +108,12 @@ body {
     flex: 2;
 }
 
-.projects-footer-plus {
+.item-footer-plus {
     border-right: 2px solid #000;
     flex: 1;
 }
 
-.projects-footer-minus {
+.item-footer-minus {
     border-left: 2px solid #000;
     flex: 1;
 }
@@ -133,7 +130,7 @@ body {
 }
 
 .form-item {
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-size: 1.5rem;
     width: 100%;
     display: flex;
@@ -147,6 +144,7 @@ input[type=text] {
     border: none;
     border-bottom: 2px solid #000;
     text-align: center;
+    padding-bottom: .4rem;
 }
 
 input[type=submit] {
@@ -157,4 +155,5 @@ input[type=submit] {
     background-color: #fff;
     color: #000;
     border-radius: 5px;
+    padding: .8rem 1.5rem;
 }

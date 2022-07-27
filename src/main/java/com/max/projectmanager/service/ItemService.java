@@ -15,11 +15,11 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
-    public List<Item> getItemsByProject(Project project) {
-        return itemRepository.findItemsByProject(project);
-    }
-
     public List<Item> getItemsByProjectAndIsDone(Project project, Boolean isDone) {
         return itemRepository.findItemsByProjectAndIsDone(project, isDone);
+    }
+
+    public Item saveItem(Item item) {
+        return itemRepository.save(item);
     }
 }

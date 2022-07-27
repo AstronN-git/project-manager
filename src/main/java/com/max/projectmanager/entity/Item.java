@@ -46,4 +46,14 @@ public class Item {
     public void setDone(Boolean done) {
         isDone = done;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", project=" + project +
+                ", name='" + name + '\'' +
+                ", isDone=" + isDone +
+                '}';
+    }
 }
