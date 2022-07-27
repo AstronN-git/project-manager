@@ -28,8 +28,8 @@
         <div class="item item-header">
             Not done
         </div>
-        <div th:each="item : ${itemsNotDone}" class="item small">
-            <span th:text="${item.name}"></span>
+        <div th:each="item : ${itemsNotDone}" class="item small" th:onclick="|window.location.href='/?projectid=${currentProjectId}&taskid=${item.id}'|">
+            <span th:if="${currentTaskId == item.id}"> > </span><span th:text="${item.name}"></span>
         </div>
         <div class="item item-footer">
             <div class="item-footer-plus" th:if="${currentProjectId}" th:onclick="|window.location.href='/createtask?projectid=' + ${currentProjectId}|">+</div>
@@ -43,8 +43,8 @@
         <div class="item item-header">
             Done
         </div>
-        <div th:each="item : ${itemsDone}" class="item small">
-            <span th:text="${item.name}"></span>
+        <div th:each="item : ${itemsDone}" class="item small" th:onclick="|window.location.href='/?projectid=${currentProjectId}&taskid=${item.id}'|">
+            <span th:if="${currentTaskId == item.id}"> > </span><span th:text="${item.name}"></span>
         </div>
         <div class="item item-footer">
             <div class="item-footer-plus" th:if="${currentProjectId}" th:onclick="|window.location.href='/createtask?projectid=' + ${currentProjectId} + '&isdone=true'|">+</div>

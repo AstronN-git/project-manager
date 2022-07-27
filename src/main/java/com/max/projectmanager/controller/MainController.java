@@ -23,7 +23,9 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String index(Model model, @RequestParam(name = "projectid", required = false) Long projectId) {
+    public String index(Model model,
+                        @RequestParam(name = "projectid", required = false) Long projectId,
+                        @RequestParam(name = "taskid", required = false) Long taskId) {
         var projects = projectService.findAllProjects();
         model.addAttribute(projects);
         if (projectId != null) {
@@ -35,6 +37,9 @@ public class MainController {
                 model.addAttribute("itemsNotDone", itemsNotDone);
             }
             model.addAttribute("currentProjectId", projectId);
+        }
+        if (taskId != null) {
+            model.addAttribute("currentTaskId", taskId);
         }
         return "index";
     }
@@ -79,6 +84,6 @@ public class MainController {
     @PostMapping("/createtask")
     public RedirectView processTaskCreation(@ModelAttribute Item item) {
         item = itemService.saveItem(item);
-        return new RedirectView("/?projectid=" + item.getProject().getId());
+        return new RedirectView("/?projectid=" + item.getProject().getId() + "&taskid=" + item.getId());
     }
 }
