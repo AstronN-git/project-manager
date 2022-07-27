@@ -36,7 +36,8 @@
             <div class="item-footer-plus" th:unless="${currentProjectId}" th:onclick="">+</div>
             <div class="separator"></div>
             <div class="separator"></div>
-            <div class="item-footer-minus">-</div>
+            <div class="item-footer-minus" th:if="${currentTaskId}" th:onclick="|window.location.href='/deletetask?taskid=' + ${currentTaskId}|">-</div>
+            <div class="item-footer-minus" th:unless="${currentTaskId}" th:onclick="">-</div>
         </div>
     </div>
     <div class="items">
@@ -51,7 +52,8 @@
             <div class="item-footer-plus" th:unless="${currentProjectId}" th:onclick="">+</div>
             <div class="separator"></div>
             <div class="separator"></div>
-            <div class="item-footer-minus">-</div>
+            <div class="item-footer-minus" th:if="${currentTaskId}" th:onclick="|window.location.href='/deletetask?taskid=' + ${currentTaskId}|">-</div>
+            <div class="item-footer-minus" th:unless="${currentTaskId}" th:onclick="">-</div>
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 package com.max.projectmanager.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="items")

@@ -31,8 +31,8 @@ public class MainController {
         if (projectId != null) {
             var project = projectService.findProjectById(projectId);
             if (project != null) {
-                var itemsDone = itemService.getItemsByProjectAndIsDone(project, true);
-                var itemsNotDone = itemService.getItemsByProjectAndIsDone(project, false);
+                var itemsDone = itemService.findItemsByProjectAndIsDone(project, true);
+                var itemsNotDone = itemService.findItemsByProjectAndIsDone(project, false);
                 model.addAttribute("itemsDone", itemsDone);
                 model.addAttribute("itemsNotDone", itemsNotDone);
             }
@@ -85,5 +85,19 @@ public class MainController {
     public RedirectView processTaskCreation(@ModelAttribute Item item) {
         item = itemService.saveItem(item);
         return new RedirectView("/?projectid=" + item.getProject().getId() + "&taskid=" + item.getId());
+    }
+
+    @GetMapping("/deletetask")
+    public RedirectView deleteTask(@RequestParam(name = "taskid") Long taskId) {
+        var item = itemService.findItemById(taskId);
+        if (item == null) {
+            return new RedirectView("/");
+        }
+
+        var projectId = item.getProject().getId();
+
+        itemService.deleteItem(item);
+        
+        return new RedirectView("/?projectid=" + projectId);
     }
 }

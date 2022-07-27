@@ -15,7 +15,7 @@ public class Project {
     private String name;
     private String url;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project", cascade = CascadeType.REMOVE)
     private Set<Item> items = new HashSet<>();
 
     public Long getId() {
