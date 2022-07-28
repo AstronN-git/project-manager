@@ -20,7 +20,7 @@
         </div>
         <div class="item item-footer">
             <div class="item-footer-plus" th:onclick="|window.location.href='/createproject'|">+</div>
-            <div class="separator"></div>
+            <div class="flex-2"></div>
             <div class="item-footer-minus" th:onclick="|window.location.href='/deleteproject?projectid=${currentProjectId != null ? currentProjectId : -1}'|">-</div>
         </div>
     </div>
@@ -34,8 +34,10 @@
         <div class="item item-footer">
             <div class="item-footer-plus" th:if="${currentProjectId}" th:onclick="|window.location.href='/createtask?projectid=' + ${currentProjectId}|">+</div>
             <div class="item-footer-plus" th:unless="${currentProjectId}" th:onclick="">+</div>
-            <div class="separator"></div>
-            <div class="separator"></div>
+            <div class="flex-1"></div>
+            <div class="item-footer-item flex-2" th:if="${currentTaskId}" th:onclick="|window.location.href='/done?taskid=' + ${currentTaskId}|"><span>Done</span></div>
+            <div class="item-footer-item flex-2" th:unless="${currentTaskId}"><span>Done</span></div>
+            <div class="flex-1"></div>
             <div class="item-footer-minus" th:if="${currentTaskId}" th:onclick="|window.location.href='/deletetask?taskid=' + ${currentTaskId}|">-</div>
             <div class="item-footer-minus" th:unless="${currentTaskId}" th:onclick="">-</div>
         </div>
@@ -50,8 +52,10 @@
         <div class="item item-footer">
             <div class="item-footer-plus" th:if="${currentProjectId}" th:onclick="|window.location.href='/createtask?projectid=' + ${currentProjectId} + '&isdone=true'|">+</div>
             <div class="item-footer-plus" th:unless="${currentProjectId}" th:onclick="">+</div>
-            <div class="separator"></div>
-            <div class="separator"></div>
+            <div class="flex-1"></div>
+            <div class="item-footer-item flex-2" th:if="${currentTaskId}" th:onclick="|window.location.href='/undone?taskid=' + ${currentTaskId}|"><span>Undone</span></div>
+            <div class="item-footer-item flex-2" th:unless="${currentTaskId}"><span>Undone</span></div>
+            <div class="flex-1"></div>
             <div class="item-footer-minus" th:if="${currentTaskId}" th:onclick="|window.location.href='/deletetask?taskid=' + ${currentTaskId}|">-</div>
             <div class="item-footer-minus" th:unless="${currentTaskId}" th:onclick="">-</div>
         </div>

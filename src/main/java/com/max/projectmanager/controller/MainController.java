@@ -100,4 +100,36 @@ public class MainController {
         
         return new RedirectView("/?projectid=" + projectId);
     }
+
+    @GetMapping("/done")
+    public RedirectView makeDone(@RequestParam(name = "taskid") Long taskId) {
+        var item = itemService.findItemById(taskId);
+        if (item == null) {
+            return new RedirectView("/");
+        }
+
+        var projectId = item.getProject().getId();
+        item.setDone(true);
+        itemService.saveItem(item);
+
+        var itemId = item.getId();
+
+        return new RedirectView("/?projectid=" + projectId + "&taskid=" + itemId);
+    }
+
+    @GetMapping("/undone")
+    public RedirectView makeUndone(@RequestParam(name = "taskid") Long taskId) {
+        var item = itemService.findItemById(taskId);
+        if (item == null) {
+            return new RedirectView("/");
+        }
+
+        var projectId = item.getProject().getId();
+        item.setDone(false);
+        itemService.saveItem(item);
+
+        var itemId = item.getId();
+
+        return new RedirectView("/?projectid=" + projectId + "&taskid=" + itemId);
+    }
 }

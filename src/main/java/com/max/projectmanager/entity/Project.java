@@ -13,7 +13,6 @@ public class Project {
     @Column(columnDefinition = "serial")
     private Long id;
     private String name;
-    private String url;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "project", cascade = CascadeType.REMOVE)
     private Set<Item> items = new HashSet<>();
@@ -32,14 +31,6 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public Set<Item> getItems() {
