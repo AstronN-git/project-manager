@@ -1,5 +1,6 @@
 ![Project Manager logo](readme/thumbnail.png)
 ![Version v1.0](https://img.shields.io/static/v1?label=version&message=v1.0&color=lightgrey&style=for-the-badge)
+![MIT License](https://img.shields.io/static/v1?label=License&message=MIT&color=lightgrey&style=for-the-badge)
 
 ---
 ### What is it?
