@@ -15,47 +15,64 @@
         <div class="item item-header">
             Projects
         </div>
+
         <div th:each="project : ${projectList}" class="item"  th:onclick="|window.location.href='/todo/?projectid=${project.id}'|">
             <span th:if="${currentProjectId == project.id}"> > </span><span th:text="${project.name}"></span>
         </div>
+
         <div class="item item-footer">
             <div class="item-footer-plus" th:onclick="|window.location.href='/todo/createproject'|">+</div>
+
             <div class="flex-2"></div>
+
             <div class="item-footer-minus" th:onclick="|window.location.href='/todo/deleteproject?projectid=${currentProjectId != null ? currentProjectId : -1}'|">-</div>
         </div>
     </div>
+
     <div class="items">
         <div class="item item-header">
             Not done
         </div>
+
         <div th:each="item : ${itemsNotDone}" class="item small" th:onclick="|window.location.href='/todo/?projectid=${currentProjectId}&taskid=${item.id}'|">
             <span th:if="${currentTaskId == item.id}"> > </span><span th:text="${item.name}"></span>
         </div>
+
         <div class="item item-footer">
             <div class="item-footer-plus" th:if="${currentProjectId}" th:onclick="|window.location.href='/todo/createtask?projectid=' + ${currentProjectId}|">+</div>
             <div class="item-footer-plus" th:unless="${currentProjectId}" th:onclick="">+</div>
             <div class="flex-1"></div>
+
             <div class="item-footer-item flex-2" th:if="${currentTaskId}" th:onclick="|window.location.href='/todo/done?taskid=' + ${currentTaskId}|"><span>Done</span></div>
             <div class="item-footer-item flex-2" th:unless="${currentTaskId}"><span>Done</span></div>
+
             <div class="flex-1"></div>
+
             <div class="item-footer-minus" th:if="${currentTaskId}" th:onclick="|window.location.href='/todo/deletetask?taskid=' + ${currentTaskId}|">-</div>
             <div class="item-footer-minus" th:unless="${currentTaskId}" th:onclick="">-</div>
         </div>
     </div>
+
     <div class="items">
         <div class="item item-header">
             Done
         </div>
+
         <div th:each="item : ${itemsDone}" class="item small" th:onclick="|window.location.href='/todo/?projectid=${currentProjectId}&taskid=${item.id}'|">
             <span th:if="${currentTaskId == item.id}"> > </span><span th:text="${item.name}"></span>
         </div>
+
         <div class="item item-footer">
             <div class="item-footer-plus" th:if="${currentProjectId}" th:onclick="|window.location.href='/todo/createtask?projectid=' + ${currentProjectId} + '&isdone=true'|">+</div>
             <div class="item-footer-plus" th:unless="${currentProjectId}" th:onclick="">+</div>
+
             <div class="flex-1"></div>
+
             <div class="item-footer-item flex-2" th:if="${currentTaskId}" th:onclick="|window.location.href='/todo/undone?taskid=' + ${currentTaskId}|"><span>Undone</span></div>
             <div class="item-footer-item flex-2" th:unless="${currentTaskId}"><span>Undone</span></div>
+
             <div class="flex-1"></div>
+
             <div class="item-footer-minus" th:if="${currentTaskId}" th:onclick="|window.location.href='/todo/deletetask?taskid=' + ${currentTaskId}|">-</div>
             <div class="item-footer-minus" th:unless="${currentTaskId}" th:onclick="">-</div>
         </div>
