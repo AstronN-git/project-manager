@@ -12,7 +12,7 @@
         <div class="title">
             Create project
         </div>
-        <form action="#" th:action="@{/createproject}" th:object="${project}" method="post">
+        <form action="#" th:action="@{/todo/createproject}" th:object="${project}" method="post">
             <div class="form-item">
                 <input type="text" th:field="*{name}" placeholder="Project Name" required>
             </div>

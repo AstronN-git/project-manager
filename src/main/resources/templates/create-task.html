@@ -12,7 +12,7 @@
         <div class="title">
             Create task
         </div>
-        <form action="#" th:action="@{/createtask}" th:object="${item}" method="post">
+        <form action="#" th:action="@{/todo/createtask}" th:object="${item}" method="post">
             <input type="hidden" th:field="*{project}">
             <input type="hidden" th:field="*{done}">
 
