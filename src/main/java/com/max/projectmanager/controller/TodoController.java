@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.stream.Collectors;
+
 @Controller
 @RequestMapping("/todo")
 public class TodoController {
@@ -26,28 +28,43 @@ public class TodoController {
                         @RequestParam(name = "taskid", required = false) Long taskId) {
         var projects = projectService.findAllProjects();
         model.addAttribute(projects);
+
         if (projectId != null) {
             var project = projectService.findProjectById(projectId);
+
             if (project != null) {
-                var itemsDone = itemService.findItemsByProjectAndIsDone(project, true);
-                var itemsNotDone = itemService.findItemsByProjectAndIsDone(project, false);
+                var allItems = project.getItems();
+
+                var itemsDone = allItems.stream()
+                        .filter(Item::getDone)
+                        .collect(Collectors.toList());
+
+                var itemsNotDone = allItems.stream()
+                        .filter(item -> !item.getDone())
+                        .collect(Collectors.toList());
+
                 model.addAttribute("itemsDone", itemsDone);
                 model.addAttribute("itemsNotDone", itemsNotDone);
             }
+
             model.addAttribute("currentProjectId", projectId);
         }
+
         if (taskId != null) {
             model.addAttribute("currentTaskId", taskId);
         }
+
         return "todo-index";
     }
 
     @GetMapping("/deleteproject")
     public RedirectView deleteProject(@RequestParam(name = "projectid") Long projectId) {
         var project = projectService.findProjectById(projectId);
+
         if (project != null) {
             projectService.deleteProject(project);
         }
+
         return new RedirectView("/todo/");
     }
 

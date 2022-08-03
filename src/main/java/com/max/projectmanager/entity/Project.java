@@ -2,8 +2,8 @@ package com.max.projectmanager.entity;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="projects")
@@ -15,7 +15,7 @@ public class Project {
     private String name;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "project", cascade = CascadeType.REMOVE)
-    private Set<Item> items = new HashSet<>();
+    private List<Item> items = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class Project {
         this.name = name;
     }
 
-    public Set<Item> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
-    public void setItems(Set<Item> items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 }

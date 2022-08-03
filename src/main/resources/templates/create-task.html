@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create task</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/todo.css}">
 </head>
 <body>
 <div class="form-container">
@@ -15,7 +15,6 @@
         <form action="#" th:action="@{/todo/createtask}" th:object="${item}" method="post">
             <input type="hidden" th:field="*{project}">
             <input type="hidden" th:field="*{done}">
-
             <div class="form-item">
                 <input type="text" th:field="*{name}" placeholder="Task Name" required>
             </div>

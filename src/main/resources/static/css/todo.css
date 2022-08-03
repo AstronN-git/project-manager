@@ -171,3 +171,7 @@ input[type=submit] {
     border-radius: 5px;
     padding: .8rem 1.5rem;
 }
+
+.inv {
+    filter: invert(100%);
+}

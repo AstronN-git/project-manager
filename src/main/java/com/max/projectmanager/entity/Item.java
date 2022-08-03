@@ -1,7 +1,6 @@
 package com.max.projectmanager.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="items")
@@ -11,10 +10,10 @@ public class Item {
     @Column(columnDefinition = "serial")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Project project;
     private String name;
-    private Boolean isDone;
+    private Boolean done;
 
     public Long getId() {
         return id;
@@ -41,20 +40,19 @@ public class Item {
     }
 
     public Boolean getDone() {
-        return isDone;
+        return done;
     }
 
     public void setDone(Boolean done) {
-        isDone = done;
+        this.done = done;
     }
 
     @Override
     public String toString() {
         return "Item{" +
                 "id=" + id +
-                ", project=" + project +
                 ", name='" + name + '\'' +
-                ", isDone=" + isDone +
+                ", isDone=" + done +
                 '}';
     }
 }
