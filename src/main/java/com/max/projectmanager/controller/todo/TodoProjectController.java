@@ -2,6 +2,7 @@ package com.max.projectmanager.controller.todo;
 
 import com.max.projectmanager.entity.Project;
 import com.max.projectmanager.service.ProjectService;
+import com.max.projectmanager.util.Users;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,7 @@ public class TodoProjectController {
 
     @PostMapping("${url.project.create}")
     public RedirectView processProjectCreation(@ModelAttribute Project project) {
+        project.setUser(Users.getCurrentUser());
         project = projectService.saveProject(project);
         return new RedirectView(todoUrl + "/?projectid=" + project.getId());
     }

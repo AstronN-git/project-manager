@@ -1,6 +1,7 @@
 package com.max.projectmanager.service;
 
 import com.max.projectmanager.entity.Project;
+import com.max.projectmanager.entity.User;
 import com.max.projectmanager.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ public class ProjectService {
     public List<Project> findAllProjects() {
         return projectRepository.findAll();
     }
+
+    public List<Project> findAllByUser(User user) {return projectRepository.findAllByUser(user);}
 
     public Project findProjectById(Long id) {
         return projectRepository.findById(id).orElse(null);

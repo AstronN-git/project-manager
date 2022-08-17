@@ -2,6 +2,7 @@ package com.max.projectmanager.controller.todo;
 
 import com.max.projectmanager.entity.Item;
 import com.max.projectmanager.service.ProjectService;
+import com.max.projectmanager.util.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class TodoController {
     public String index(Model model,
                         @RequestParam(name = "projectid", required = false) Long projectId,
                         @RequestParam(name = "taskid", required = false) Long taskId) {
-        var projects = projectService.findAllProjects();
+        var projects = projectService.findAllByUser(Users.getCurrentUser());
         model.addAttribute(projects);
 
         if (projectId != null) {
