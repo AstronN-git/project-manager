@@ -44,4 +44,17 @@ public class Project {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+    public void addItem(Item item) {
+        item.setProject(this);
+        items.add(item);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

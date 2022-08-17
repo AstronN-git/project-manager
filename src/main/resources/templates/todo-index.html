@@ -68,7 +68,7 @@
 
             <div class="flex-1"></div>
 
-            <div class="item-footer-item flex-2" th:if="${currentTaskId}" th:onclick="|window.location.href='/todo/undone?taskid=' + ${currentTaskId}|"><span>Undone</span></div>
+            <div class="item-footer-item flex-2" th:if="${currentTaskId}" th:onclick="|window.location.href='/todo/done?taskid=' + ${currentTaskId}|"><span>Undone</span></div>
             <div class="item-footer-item flex-2" th:unless="${currentTaskId}"><span>Undone</span></div>
 
             <div class="flex-1"></div>
