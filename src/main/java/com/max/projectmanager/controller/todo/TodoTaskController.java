@@ -72,7 +72,7 @@ public class TodoTaskController {
 
         var itemId = item.getId();
 
-        return "redirect:" + todoUrl + "/projectid="
+        return "redirect:" + todoUrl + "/?projectid="
                 + projectId + "&taskid=" + itemId;
     }
 }
