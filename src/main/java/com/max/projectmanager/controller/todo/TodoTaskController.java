@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("${url.todo}")
@@ -40,30 +39,31 @@ public class TodoTaskController {
     }
 
     @PostMapping("${url.task.create}")
-    public RedirectView processTaskCreation(@ModelAttribute Item item) {
+    public String processTaskCreation(@ModelAttribute Item item) {
         item = itemService.saveItem(item);
-        return new RedirectView(todoUrl + "/?projectid=" + item.getProject().getId() + "&taskid=" + item.getId());
+        return "redirect:" + todoUrl + "/?projectid="
+                + item.getProject().getId() + "&taskid=" + item.getId();
     }
 
     @GetMapping("${url.task.delete}")
-    public RedirectView deleteTask(@RequestParam(name = "taskid") Long taskId) {
+    public String deleteTask(@RequestParam(name = "taskid") Long taskId) {
         var item = itemService.findItemById(taskId);
         if (item == null) {
-            return new RedirectView(todoUrl);
+            return "redirect:/" + todoUrl;
         }
 
         var projectId = item.getProject().getId();
 
         itemService.deleteItem(item);
 
-        return new RedirectView(todoUrl + "/?projectid=" + projectId);
+        return "redirect:" + todoUrl + "/?projectid=" + projectId;
     }
 
     @GetMapping("${url.task.done}")
-    public RedirectView makeDone(@RequestParam(name = "taskid") Long taskId) {
+    public String makeDone(@RequestParam(name = "taskid") Long taskId) {
         var item = itemService.findItemById(taskId);
         if (item == null) {
-            return new RedirectView(todoUrl);
+            return "redirect:" + todoUrl;
         }
 
         var projectId = item.getProject().getId();
@@ -72,6 +72,7 @@ public class TodoTaskController {
 
         var itemId = item.getId();
 
-        return new RedirectView(todoUrl + "/?projectid=" + projectId + "&taskid=" + itemId);
+        return "redirect:" + todoUrl + "/projectid="
+                + projectId + "&taskid=" + itemId;
     }
 }

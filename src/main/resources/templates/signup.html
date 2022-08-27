@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <link rel="stylesheet" th:href="@{/css/todo.css}">
+</head>
+<body>
+<div class="form-container">
+  <div class="form">
+    <div class="title">
+      Create task
+    </div>
+    <form action="#" th:action="@{/signup/confirm}" th:object="${user}" method="post">
+      <div class="form-item">
+        <input type="text" th:field="*{username}" placeholder="Username" required>
+      </div>
+      <div class="form-item">
+        <input type="password" th:field="*{password}" placeholder="Password" required>
+      </div>
+      <div class="form-item">
+        <input type="submit" value="Signup">
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

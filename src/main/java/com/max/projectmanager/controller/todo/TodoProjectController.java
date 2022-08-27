@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("${url.todo}")
@@ -22,14 +21,14 @@ public class TodoProjectController {
     }
 
     @GetMapping("${url.project.delete}")
-    public RedirectView deleteProject(@RequestParam(name = "projectid") Long projectId) {
+    public String deleteProject(@RequestParam(name = "projectid") Long projectId) {
         var project = projectService.findProjectById(projectId);
 
         if (project != null) {
             projectService.deleteProject(project);
         }
 
-        return new RedirectView(todoUrl);
+        return "redirect:" + todoUrl;
     }
 
     @GetMapping("${url.project.create}")
@@ -39,9 +38,9 @@ public class TodoProjectController {
     }
 
     @PostMapping("${url.project.create}")
-    public RedirectView processProjectCreation(@ModelAttribute Project project) {
+    public String processProjectCreation(@ModelAttribute Project project) {
         project.setUser(Users.getCurrentUser());
         project = projectService.saveProject(project);
-        return new RedirectView(todoUrl + "/?projectid=" + project.getId());
+        return "redirect:" + todoUrl + "/?projectid=" + project.getId();
     }
 }

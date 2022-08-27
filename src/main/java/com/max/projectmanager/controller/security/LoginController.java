@@ -1,4 +1,4 @@
-package com.max.projectmanager.controller;
+package com.max.projectmanager.controller.security;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
