@@ -8,21 +8,27 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfiguration {
-    @Value("${url.todo}")
-    private String todoUrl;
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.
                 authorizeRequests()
                 .antMatchers("/", "/css/*", "/js/*")
                 .permitAll()
+                .antMatchers("/login", "/signup", "/signup/confirm")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
+                .csrf()
+                .disable()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
                 .and()
                 .httpBasic();
 

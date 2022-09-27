@@ -1,11 +1,16 @@
 package com.max.projectmanager.util;
 
 import com.max.projectmanager.entity.User;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 public class Users {
     public static User getCurrentUser() {
-        var user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null)
+            return null;
+
+        Object user = authentication.getPrincipal();
 
         if (user == null) {
             return null;
